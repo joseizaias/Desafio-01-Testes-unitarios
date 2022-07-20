@@ -24,7 +24,6 @@ export class CreateStatementController {
       amount,
       description
     });
-
-    return response.status(201).json(statement);
+  return response.status(201).json(statement);
   }
 }
