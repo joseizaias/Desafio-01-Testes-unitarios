@@ -43,7 +43,11 @@ describe("Create a statement", () => {
       description
     });
 
-    expect(statement).toHaveProperty("user_id");
+    expect(statement).toEqual(
+      expect.objectContaining({
+         amount: 111
+      })
+    );  //  objectContain ///toHaveProperty("amount");
 
   });
 
@@ -134,7 +138,7 @@ describe("Create a statement", () => {
         description
       });
 
-    }).rejects.toEqual({"message": "Insufficient funds", "statusCode": 400});
+    }).rejects.toBeInstanceOf(CreateStatementError.InsufficientFunds)    /// toEqual({"message": "Insufficient funds", "statusCode": 400});
 
   });
 

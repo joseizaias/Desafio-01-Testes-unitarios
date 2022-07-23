@@ -8,7 +8,7 @@ describe("Show User Profile", () => {
   let showUserProfileUseCase: ShowUserProfileUseCase;
   let inMemoryUsersRepository: InMemoryUsersRepository;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     inMemoryUsersRepository = new InMemoryUsersRepository();
     createUserUseCase = new CreateUserUseCase(inMemoryUsersRepository);
     showUserProfileUseCase = new ShowUserProfileUseCase(inMemoryUsersRepository);
@@ -26,7 +26,7 @@ describe("Show User Profile", () => {
     expect(showUserProfileResult).toHaveProperty("id");
   })
 
-  it("should be able to deny accessing data if the user does not exist", async () => {
+  it("should be NOT able to access data if the user does not exist", async () => {
     expect(async () => {
       const user_id = "1a";
       await showUserProfileUseCase.execute(user_id);
